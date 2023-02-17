@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Attributes 
+    [SerializeField] private float _speed = 10f;
+
     // Private Methods
-    void Start()
+    private void Start()
     {
         // Initial Player Position
-        Application.targetFrameRate = 30;
-        transform.position = new Vector3(0f, 0.5f, 0f);
+        this.transform.position = new Vector3(0f, 0.5f, 0f);
     }
 
-    void Update()
+    private void Update()
     {
         float positionX = Input.GetAxis("Horizontal");
-        float positionY = Input.GetAxis("Vertical");
-        Debug.Log(positionX + " , " + positionY);
+        float positionZ = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(positionX, 0f, positionZ);
+        transform.Translate(direction * Time.deltaTime * _speed);
     }
 }
