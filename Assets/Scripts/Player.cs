@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     // Private Methods
     private void Start()
     {
+        Application.targetFrameRate = 30;
         // Initial Player Position
         this.transform.position = new Vector3(0f, 0.5f, 0f);
     }
