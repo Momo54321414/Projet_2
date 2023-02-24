@@ -5,6 +5,7 @@ using UnityEngine;
 public class GestionCollision : MonoBehaviour
 {
     private GestionJeu _gestionJeu;
+    private bool _touche = false;
 
     private void Start()
     {
@@ -13,7 +14,14 @@ public class GestionCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-        _gestionJeu.AugmenterPointage();
+        if (collision.gameObject.tag == "Player")
+        {
+            if (!_touche)
+            {
+                gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                _gestionJeu.AugmenterPointage();
+                _touche = true;
+            }
+        }
     }
 }

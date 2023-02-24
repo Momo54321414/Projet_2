@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Attributes 
     [SerializeField] private float _speed = 10f;
 
-    // Private Methods
     private void Start()
     {
-        Application.targetFrameRate = 40;
-        // Initial Player Position
-        this.transform.position = new Vector3(0f, 0.5f, 0f);
+        Application.targetFrameRate = 48;
+
+        // this.transform.position = new Vector3(0f, 0.5f, 0f);
     }
 
     private void Update()
@@ -21,5 +19,10 @@ public class Player : MonoBehaviour
         float positionZ = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(positionX, 0f, positionZ);
         transform.Translate(direction * Time.deltaTime * _speed);
+    }
+
+    public void stop()
+    {
+        _speed = 0;
     }
 }
