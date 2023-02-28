@@ -23,7 +23,7 @@ public class End : MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 end = true;
-                _player.stop();
+                _player.end();
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
                 _pointage = _gestionJeu.getPointage();
                 endTime = Time.time + _pointage;

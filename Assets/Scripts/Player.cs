@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _speed = 10f;
+    [SerializeField] private float _speed = 1000f;
+    private Rigidbody _rb;
 
     private void Start()
     {
         Application.targetFrameRate = 48;
 
+        _rb = GetComponent<Rigidbody>();
+
         // this.transform.position = new Vector3(0f, 0.5f, 0f);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         float positionX = Input.GetAxis("Horizontal");
         float positionZ = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(positionX, 0f, positionZ);
         transform.Translate(direction * Time.deltaTime * _speed);
+        //_rb.velocity= direction * Time.fixedDeltaTime * _speed;
+        //_rb.AddForce(direction * Time.fixedDeltaTime * _speed);
     }
 
-    public void stop()
+    public void end()
     {
-        _speed = 0;
+        gameObject.SetActive(false);
     }
 }
