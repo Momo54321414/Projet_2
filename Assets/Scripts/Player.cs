@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 48;
+        Application.targetFrameRate = 40;
 
         _rb = GetComponent<Rigidbody>();
 
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
         float positionX = Input.GetAxis("Horizontal");
         float positionZ = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(positionX, 0f, positionZ);
+        direction.Normalize();
         transform.Translate(direction * Time.deltaTime * _speed);
         //_rb.velocity= direction * Time.fixedDeltaTime * _speed;
         //_rb.AddForce(direction * Time.fixedDeltaTime * _speed);

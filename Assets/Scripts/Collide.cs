@@ -5,20 +5,31 @@ using UnityEngine;
 
 public class Collide : MonoBehaviour
 {
-    [SerializeField] private GameObject _piege = default;
-    private Rigidbody _rb;
+    [SerializeField] private List<GameObject> _listePieges = new List<GameObject>();
+    //[SerializeField] private GameObject _piege = default;
+    private List<Rigidbody> _listeRb = new List<Rigidbody>();
+    private bool isActv = false;
+    //private Rigidbody _rb;
 
     private void Start()
     {
-        _rb = _piege.GetComponent<Rigidbody>();
+        foreach(var piege in _listePieges)
+        {
+            _listeRb.Add(piege.GetComponent<Rigidbody>());
+        }
+        //_rb = _piege.GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !isActv)
         {
-            _rb.useGravity = true;
-            _rb.AddForce(new Vector3(200f, 200f, 0f));
+            isActv = true;
+            foreach(var rb in _listeRb)
+            {
+                rb.useGravity = true;
+                rb.AddForce(new Vector3(0f, 200f, 400f));
+            }
             Debug.Log("HIT");
         }
     }
