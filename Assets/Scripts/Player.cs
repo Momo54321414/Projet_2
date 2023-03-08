@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 40;
+        Application.targetFrameRate = 50;
 
         _rb = GetComponent<Rigidbody>();
 
