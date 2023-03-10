@@ -17,9 +17,9 @@ public class ThrowRight : MonoBehaviour
     {
         while (true)
         {
-            this.transform.position = new Vector3(-8.5f, 1.8f, 8f);
+            this.transform.position = new Vector3(-6.5f, 1.7f, 10f);
 
-            _rb.AddForce(new Vector3(0f, 0f, 80f));
+            _rb.AddForce(new Vector3(0f, 0f, 2000f));
 
             yield return new WaitForSeconds(2f);
         }

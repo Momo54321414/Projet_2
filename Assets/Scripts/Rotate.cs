@@ -6,6 +6,6 @@ public class Rotate : MonoBehaviour
 {
     void FixedUpdate()
     {
-        transform.Rotate(0f, 1f, 0f);
+        transform.Rotate(0f, 4f, 0f);
     }
 }
